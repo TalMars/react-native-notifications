@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.net.Uri;
 
 import com.facebook.react.bridge.ReactContext;
 import com.wix.reactnativenotifications.core.AppLaunchHelper;
@@ -142,6 +143,12 @@ public class PushNotification implements IPushNotification {
 
     protected Notification buildNotification(PendingIntent intent) {
         return getNotificationBuilder(intent).build();
+    }
+
+    private int getResourceId(String type, String image) {
+        return mContext
+                .getResources()
+                .getIdentifier(image, type, mContext.getPackageName());
     }
 
     protected Notification.Builder getNotificationBuilder(PendingIntent intent) {
