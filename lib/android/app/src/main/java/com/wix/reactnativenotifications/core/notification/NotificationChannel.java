@@ -1,6 +1,7 @@
 package com.wix.reactnativenotifications.core.notification;
 
 import android.app.NotificationManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Color;
 import android.media.RingtoneManager;
@@ -102,7 +103,8 @@ public class NotificationChannel implements INotificationChannel {
             if (soundResourceId == 0) {
                 soundResourceId = getResourceId("raw", sound.substring(0, sound.lastIndexOf('.')));
             }
-            return Uri.parse("android.resource://" + mContext.getPackageName() + "/" + soundResourceId);
+            String uri = ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + mContext.getPackageName() + "/" + soundResourceId;
+            return Uri.parse(uri);
         }
     }
 

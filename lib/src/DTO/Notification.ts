@@ -30,4 +30,12 @@ export class Notification {
   get thread(): string {
     return this.payload.thread;
   }
+
+  get channelId(): string | null {
+    return this.payload.channelId;
+  }
+
+  get silent(): boolean {
+    return !!this.payload.silent;
+  }
 }
